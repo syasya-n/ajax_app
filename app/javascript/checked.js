@@ -6,14 +6,14 @@ function check() {
     if (post.getAttribute("data-load") != null) {
       return null;
     }
+    post.setAttribute("data-load","true");
     post.addEventListener("click",() => {
       // メモをクリックした場合に実行する処理を定義している
-      post.setAttribute("data-load","true");
       // どのメモをクリックしたのか、カスタムデータを利用して取得している
       const postId = post.getAttribute("data-id")
       // Ajaxに必要なオブジェクトを生成している
       const XHR = new XMLHttpRequest();
-      // openでリクエストを初期化する
+      // openでリクエストを初期化する(checked action)
       XHR.open("GET",`/posts/${postId}`,true);
       //レスポンスのタイプを指定する
       XHR.responseType = "json";
